@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40pvh;
+}
+.container {
+    background-image: linear-gradient(to bottom right,#7bd5f5, #5cbee2);
+}
