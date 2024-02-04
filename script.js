@@ -5,6 +5,8 @@ let temperature = document.querySelector(".temperature");
 let cityDiv = document.querySelector(".city");
 let humidityDiv = document.querySelector("#humidity");
 let windSpeedDiv = document.querySelector("#wind-speed");
+let weatherDiv = document.querySelector(".weather-icon");
+
 
 btn.addEventListener("click", async (evt) => {
     let URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=03090868369362093ae55e0a515b253f`;
@@ -16,8 +18,10 @@ btn.addEventListener("click", async (evt) => {
 const updateData = (data) => {
     console.log(data);
     let temp = data.main.temp - 273.15;
+    let weather = data.weather[0].description;
     temperature.innerHTML = `<h5>${temp.toFixed(1)}&deg; c<h5>`;
     cityDiv.innerText = data.name;
     humidityDiv.innerText = `${data.main.humidity}%`;
     windSpeedDiv.innerText = `${data.wind.speed} km/hr`;
+    console.log(weather)
 }
