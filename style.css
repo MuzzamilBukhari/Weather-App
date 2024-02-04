@@ -10,4 +10,5 @@ body{
 }
 .container {
     background-image: linear-gradient(to bottom right,#7bd5f5, #5cbee2);
+    border: 2px solid red;
 }
