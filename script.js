@@ -11,10 +11,16 @@ let weatherImg = document.querySelector("#weather-img");
 btn.addEventListener("click", async (evt) => {
     let URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=03090868369362093ae55e0a515b253f`;
     let response = await fetch(URL);
-    let data = await response.json();
-    updateData(data);
+    if (response.status == "200"){
+        let data = await response.json();
+        updateData(data);
+    } else {
+        displayError();
+    }
 })
-
+const displayError = () => {
+    cityDiv.innerText = "City not Found!"
+}
 const updateData = (data) => {
     console.log(data);
     let temp = data.main.temp - 273.15;
@@ -23,7 +29,6 @@ const updateData = (data) => {
     cityDiv.innerText = data.name;
     humidityDiv.innerText = `${data.main.humidity}%`;
     windSpeedDiv.innerText = `${data.wind.speed} km/hr`;
-    console.log(weather)
     if (weather == "Clouds"){
         weatherImg.src = "img/clouds.png";
     } else if (weather == "Clear"){
